@@ -1,17 +1,19 @@
 import { faker } from "@faker-js/faker"
-import Demo from "../pageobjects/demoqa.js"
-import webtable from "../pageobjects/webtable.js"
+import webtable from "../pageobjects/demoQA/webtable.js"
 import testdata from "../testdata/testdata.json" with {type:"json"}
 
 describe('web table data entry',()=>{
     let f_name,ename;
-    it('opening the wwesite',async()=>{
+    it('opening the wesite',async()=>{
         await browser.url(testdata.url)
     })
     it('clicking web table menu',async()=>{
         await webtable.$elements().click();
+        expect()
+
         await webtable.$webtable().click();
-    })
+
+    });
     it('clicking on add button to add new person',async()=>{
         await webtable.$Add().click();
         //expect(webtable.$registartionform().toBePresent())
@@ -35,6 +37,7 @@ describe('web table data entry',()=>{
         await expect(webtable.$last_name(l_name)).toBeDisplayed();
         await expect(webtable.$email_(mail)).toBeDisplayed();
         await expect(webtable.$department_(dept)).toBeDisplayed();
+        
 
     })
     it('edit the form and validate it is displayed', async () => {
@@ -46,7 +49,6 @@ describe('web table data entry',()=>{
     
        await webtable.$deletebut(ename).click();
        await expect(webtable.$dataloc(ename)).not.toBeDisplayed();
-       
     });
     
 

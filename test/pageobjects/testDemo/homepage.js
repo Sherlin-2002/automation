@@ -1,4 +1,4 @@
-import CommonClass from "../pageobjects/commonpage.js";
+import CommonClass from "./commonpage.js";
 
 class HomePage extends CommonClass {
     constructor() {

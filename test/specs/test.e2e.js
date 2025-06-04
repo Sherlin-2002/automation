@@ -1,8 +1,8 @@
 import { expect } from '@wdio/globals'
 // import LoginPage from '../pageobjects/login.page.js'
 // import SecurePage from '../pageobjects/secure.page.js'
-import Homepage from '../pageobjects/homepage.js'
-import CommonClass from "../pageobjects/commonpage.js"
+import Homepage from '../pageobjects/testDemo/homepage.js'
+import CommonClass from "../pageobjects/testDemo/commonpage.js"
 
 
 describe('My Login application', () => {

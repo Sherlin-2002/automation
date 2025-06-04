@@ -1,6 +1,6 @@
-import DemoQa from "../pageobjects/demoqa.js"
-import Checkboxpage from "../pageobjects/checkboxpage.js"
-import Practiseform from "../pageobjects/practiseform.js";
+import DemoQa from "../pageobjects/demoQA/demoqa.js"
+import Checkboxpage from "../pageobjects/demoQA/checkboxpage.js"
+import Practiseform from "../pageobjects/demoQA/practiseform.js";
 import { faker } from '@faker-js/faker';
 import testdata from "../testdata/testdata.json" with {type:"json"}
 
