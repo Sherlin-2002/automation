@@ -21,7 +21,7 @@ describe('Automating swag website', () => {
     it('user adding 1 item to cart', async () => {
         await productPage.$addToCart('Sauce Labs Backpack').click();
         expect(productPage.$remove('Sauce Labs Backpack')).toBeDisplayed();
-        expect(productPage.$cartNumber('2')).toBeDisplayed();
+        expect(productPage.$cartNumber('1')).toBeDisplayed();
 
     })
     it('user adding 2 item to cart', async () => {
@@ -39,7 +39,13 @@ describe('Automating swag website', () => {
 
     })
     it('user naviagting to cart page and validating the items', async () => {
+        let price1Product1 = await productPage.priceValidation1();
+        let price1Product2 = await productPage.priceValidation2();
         await productPage.$cartButton().click();
+        let price2Product1 = await cartPage.priceValidation1();
+        let price2Product2 = await cartPage.priceValidation2();
+        expect(price1Product1).toBe(price2Product1);
+        expect(price1Product2).toBe(price2Product2);
         await expect(cartPage.$cartValidation()).toBeDisplayed();
         await expect(cartPage.$productValidation('Sauce Labs Backpack')).toBeDisplayed();
         await expect(cartPage.$productValidation('Sauce Labs Bolt T-Shirt')).toBeDisplayed();
@@ -53,14 +59,14 @@ describe('Automating swag website', () => {
 
     })
     it('validating the total price', async () => {
-        let totalAmount1 = await paymentPage.priceValidation(); 
-        let totalAmount2 = await paymentPage.totalPrice();      
-        expect(totalAmount1).toBe(totalAmount2); 
+        let totalAmount1 = await paymentPage.priceValidation();
+        let totalAmount2 = await paymentPage.totalPrice();
+        expect(totalAmount1).toEqual(totalAmount2);
         await paymentPage.$finishButton().click();
-        expect (lastPage.$lastPagrValidation()).toBeDisplayed();
+        expect(lastPage.$lastPagrValidation()).toBeDisplayed();
 
     })
-    it('last page validation',async()=>{
+    it('last page validation', async () => {
         await expect(lastPage.$thankMessage()).toBeDisplayed();
         await lastPage.$backButton().click();
         expect(login.$productsValidation()).toBeDisplayed();
